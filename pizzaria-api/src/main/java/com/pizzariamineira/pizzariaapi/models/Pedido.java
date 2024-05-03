@@ -1,6 +1,7 @@
 package com.pizzariamineira.pizzariaapi.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,8 +14,9 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private byte idPedido;
 
-    @Column
-    private LocalDateTime dataHora;
+    @Column(columnDefinition="DATETIME")
+    @CreationTimestamp
+    private String dataHora;
     @ManyToOne
     @JoinColumn
     private Cliente cliente;
@@ -32,11 +34,11 @@ public class Pedido {
     public Pedido() {
     }
 
-    public byte getIdFornada() {
+    public byte getIdPedido() {
         return idPedido;
     }
 
-    public void setIdFornada(byte idFornada) {
+    public void setIdPedido(byte idPedido) {
         this.idPedido = idPedido;
     }
 
@@ -72,11 +74,11 @@ public class Pedido {
         PizzaPedida = pizzaPedida;
     }
 
-    public LocalDateTime getDataHora() {
+    public String getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(LocalDateTime dataHora) {
+    public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
     }
 }
